@@ -1,0 +1,2 @@
+Cria uma tabela Coin
+rails generate scaffold Coin description:string acronym:string url_image:string 
