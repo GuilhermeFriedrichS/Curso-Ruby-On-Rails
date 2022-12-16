@@ -9,3 +9,13 @@ rails db:migrate
 
 Inicia o servidor como produção
 RAILS_ENV=production rails s
+
+Para abrir o terminal
+rails c 
+
+Parar criar um novo registro pelo terminal do Rails
+c = Coin.new
+c.description = "Dash"
+c.acronym = "DASH"
+c.url_image = "https://s2.coinmarketcap.com/static/img/coins/200x200/131.png"
+c.save
