@@ -19,3 +19,10 @@ c.description = "Dash"
 c.acronym = "DASH"
 c.url_image = "https://s2.coinmarketcap.com/static/img/coins/200x200/131.png"
 c.save
+
+[1] pry(main)> h = {nome: "Jackson", curso:"Rails"}
+=> {:nome=>"Jackson", :curso=>"Rails"}
+[2] pry(main)> h[:nome]
+=> "Jackson"
+[3] pry(main)> h[:curso]
+=> "Rails"
