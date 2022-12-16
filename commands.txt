@@ -1,2 +1,11 @@
-Cria uma tabela Coin
+Cria um scaffold para tabela Coin
 rails generate scaffold Coin description:string acronym:string url_image:string 
+
+Cria o banco de dados
+rails db:create
+
+Execulta o scaffold que cria uma tabela no banco
+rails db:migrate
+
+Inicia o servidor como produção
+RAILS_ENV=production rails s
