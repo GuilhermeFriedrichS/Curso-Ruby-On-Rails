@@ -5,25 +5,31 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+spinner = TTY::Spinner.new("[:spinner] Cadastrando moedas...")
+spinner.auto_spin
 
-puts "Cadastrando moedas..."
 
-Coin.create!(
-    description: "Bitcoin",
-    acronym: "BTC",
-    url_image: "https://imagensemoldes.com.br/wp-content/uploads/2020/09/Logo-Bitcoin-PNG.png"
-)
+coins = [
+    {
+        description: "Bitcoin",
+        acronym: "BTC",
+        url_image: "https://imagensemoldes.com.br/wp-content/uploads/2020/09/Logo-Bitcoin-PNG.png"
+    }, 
+    {
+        description: "Ethereum",
+        acronym: "ETC",
+        url_image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/1257px-Ethereum_logo_2014.svg.png"
+    },
+    {
+        description: "Dash",
+        acronym: "DASH",
+        url_image: "https://s2.coinmarketcap.com/static/img/coins/200x200/131.png"
+    }
+]
 
-Coin.create!(
-    description: "Ethereum",
-    acronym: "ETC",
-    url_image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/1257px-Ethereum_logo_2014.svg.png"
-)
+coins.each do |coin|
+    sleep(1)
+    Coin.find_or_create_by!(coin)
+end
 
-Coin.create!(
-    description: "Dash",
-    acronym: "DASH",
-    url_image: "https://s2.coinmarketcap.com/static/img/coins/200x200/131.png"
-)   
-
-puts "Moedas criadas com sucesso!..."
+spinner.success("(Moedas criadas com sucesso!...)")
