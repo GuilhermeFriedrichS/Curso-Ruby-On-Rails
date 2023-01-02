@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :mining_types
   get 'welcome/index'#, to: 'welcome#index' < Poderia ser assim também, mas ele suprimiu pois os nomes são iguais
   #get '/inicio', to: 'welcome#index'
  
