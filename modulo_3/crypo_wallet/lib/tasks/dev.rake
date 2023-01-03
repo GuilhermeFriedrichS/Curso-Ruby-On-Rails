@@ -6,8 +6,8 @@ namespace :dev do
       show_spinner("Criando DB...") { %x(rails db:create) }
       show_spinner("Migrando DB...") { %x(rails db:migrate) }
       
-      %x(rails dev:add_coins)
       %x(rails dev:add_mining_types)
+      %x(rails dev:add_coins)
     else
       puts "Você não está em ambiente de desenvolvimento!"
     end 
@@ -20,17 +20,24 @@ namespace :dev do
           {
               description: "Bitcoin",
               acronym: "BTC",
-              url_image: "https://imagensemoldes.com.br/wp-content/uploads/2020/09/Logo-Bitcoin-PNG.png"
+              url_image: "https://imagensemoldes.com.br/wp-content/uploads/2020/09/Logo-Bitcoin-PNG.png",
+              mining_type: MiningType.find_by(acronym: 'PoW') #where retorna uma lista dele lementos 
+              #find retorna só um, mas precisa procurar pelo id e não pode usar nomes
+              #find_by retorna só um e pode pesquisar usando nomes
+              
+              
           }, 
           {
               description: "Ethereum",
               acronym: "ETC",
-              url_image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/1257px-Ethereum_logo_2014.svg.png"
+              url_image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/1257px-Ethereum_logo_2014.svg.png",
+              mining_type: MiningType.all.sample #Seleciona um tipo de mineração aleatório da tabela
           },
           {
               description: "Dash",
               acronym: "DASH",
-              url_image: "https://s2.coinmarketcap.com/static/img/coins/200x200/131.png"
+              url_image: "https://s2.coinmarketcap.com/static/img/coins/200x200/131.png",
+              mining_type: MiningType.all.sample
           }
       ]
 
