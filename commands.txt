@@ -29,3 +29,28 @@ c.save
 
 Para criar uma chave estrangeira entre na tabela Coin da tabela MiningType, o ruby sabe qual tabela ele deve pegar o id, pois ele busca uma tabela com o mesmo nome do campo no plural
 rails g migration AddMiningTypeToCoins mining_type:references
+
+[8] pry(main)> c.map(&:description)
+=> ["Bitcoin", "Ethereum", "Dash"]
+
+[9] pry(main)> c.map { |coin| coin.description }
+=> ["Bitcoin", "Ethereum", "Dash"]
+
+[10] pry(main)> c.map(&:description)
+=> ["Bitcoin", "Ethereum", "Dash"]
+
+[11] pry(main)> c.map { |coin| [coin.description, coin.acronym] }
+=> [["Bitcoin", "BTC"], ["Ethereum", "ETC"], ["Dash", "DASH"]]
+
+[12] pry(main)> c.map([&:description, &:acronym)]
+SyntaxError: unexpected &, expecting ']'
+c.map([&:description, &:acronym)]
+        ^
+
+Comando semelhante ao map
+
+[12] pry(main)> c.pluck(:description)
+=> ["Bitcoin", "Ethereum", "Dash"]
+
+[14] pry(main)> c.pluck(:description, :acronym)
+=> [["Bitcoin", "BTC"], ["Ethereum", "ETC"], ["Dash", "DASH"]]
