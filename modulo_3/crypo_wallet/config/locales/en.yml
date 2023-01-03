@@ -21,7 +21,7 @@
 #
 # true, false, on, off, yes, no
 #
-# Instead, surround them with single quotes.
+# Instead, surround them with single quotes.  
 #
 # en:
 #   'true': 'foo'
@@ -31,3 +31,9 @@
 
 en:
   hello: "Hello world"
+  links:
+    edit: "Edit"
+    show: "Show"
+    delete: "Delete"
+    new: "New"
+    back: "Back"
