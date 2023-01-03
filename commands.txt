@@ -26,3 +26,6 @@ c.save
 => "Jackson"
 [3] pry(main)> h[:curso]
 => "Rails"
+
+Para criar uma chave estrangeira entre na tabela Coin da tabela MiningType, o ruby sabe qual tabela ele deve pegar o id, pois ele busca uma tabela com o mesmo nome do campo no plural
+rails g migration AddMiningTypeToCoins mining_type:references
