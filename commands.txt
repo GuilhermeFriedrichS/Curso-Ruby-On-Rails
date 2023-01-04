@@ -54,3 +54,6 @@ Comando semelhante ao map
 
 [14] pry(main)> c.pluck(:description, :acronym)
 => [["Bitcoin", "BTC"], ["Ethereum", "ETC"], ["Dash", "DASH"]]
+
+Gera os assets na pasta public, corrigindo o erro do modo produção e das rotas vituais
+rails assets:precompile
