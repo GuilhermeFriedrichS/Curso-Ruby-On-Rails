@@ -1,5 +1,5 @@
 class Question < ApplicationRecord
   belongs_to :subject
-  has_many :aswners
-  accepts_nested_attributes_for :aswners
+  has_many :answers
+  accepts_nested_attributes_for :answers
 end
