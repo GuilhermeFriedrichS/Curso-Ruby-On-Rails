@@ -4,9 +4,15 @@
       admin: 
         one: Administrador  
         other: Administradores
-      profile:
+      user:
         one: Usuário
         other: Usuários
+      subject:
+        one: Assunto
+        other: Assuntos
+      question:
+        one: Pergunta
+        other: Perguntas
     attributes:
       admin:
         id: Código
