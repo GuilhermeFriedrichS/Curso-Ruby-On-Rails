@@ -6,13 +6,14 @@ class Question < ApplicationRecord
   #Kaminari
   paginates_per 5
 
-  def self.search(page, term) #metodo que pode ser usado sem instanciar a classe
-    Question.includes(:answers)
-            .where("lower(description) LIKE ?", "%#{term.downcase}%")
-            .page(page)
-  end  
+  # Scopes são metodos que devem ser utilizados quando precisamos fazer pesquisas no banco de dados
+  scope :_search_, ->(page, term){ #metodo que pode ser usado sem instanciar a classe
+    includes(:answers)
+    .where("lower(description) LIKE ?", "%#{term.downcase}%")
+    .page(page)
+  }
 
-  def self.last_questions(page)
-    Question.includes(:answers).order('created_at desc').page(page)
-  end
+  scope :last_questions, -> (page){
+    includes(:answers).order('created_at desc').page(page)
+  }
 end
