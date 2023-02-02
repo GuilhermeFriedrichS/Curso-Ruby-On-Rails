@@ -7,13 +7,20 @@ class Question < ApplicationRecord
   paginates_per 5
 
   # Scopes são metodos que devem ser utilizados quando precisamos fazer pesquisas no banco de dados
+  
+  scope :_search_subject_, ->(page, subject_id){ #metodo que pode ser usado sem instanciar a classe
+    includes(:answers, :subject)
+    .where(subject_id: subject_id)
+    .page(page)
+  }
+  
   scope :_search_, ->(page, term){ #metodo que pode ser usado sem instanciar a classe
-    includes(:answers)
+    includes(:answers, :subject)
     .where("lower(description) LIKE ?", "%#{term.downcase}%")
     .page(page)
   }
 
   scope :last_questions, -> (page){
-    includes(:answers).order('created_at desc').page(page)
+    includes(:answers, :subject).order('created_at desc').page(page)
   }
 end
