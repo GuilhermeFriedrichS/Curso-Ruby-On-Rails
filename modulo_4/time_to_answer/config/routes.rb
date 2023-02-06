@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   
   get 'welcome/index'
   get 'inicio', to: 'site/welcome#index'
+  get 'backoffice', to: 'admins_backoffice/welcome#index'
 
   root to: 'site/welcome#index' #Altera a rota padrão
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
