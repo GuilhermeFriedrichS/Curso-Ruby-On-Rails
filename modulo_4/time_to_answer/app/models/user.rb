@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  after_create :set_statistic
+
   has_one :user_profile
   accepts_nested_attributes_for :user_profile, reject_if: :all_blank 
 
@@ -11,5 +13,11 @@ class User < ApplicationRecord
   
   def full_name
     [self.first_name, self.last_name].join(" ")
+  end
+
+  private
+
+  def set_statistic
+    AdminStatistic.set_event(AdminStatistic::EVENTS[:total_users])
   end
 end
